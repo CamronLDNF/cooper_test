@@ -28,7 +28,6 @@ RSpec.describe Api::V1::PerformanceDataController, type: :request do
       
         it 'returns a collection of performance data for the given user' do
             get '/api/v1/performance_data', headers: headers
-            # binding.pry
             expect(response_json['entries'].count).to eq 5
             response_json['entries'].each do |entry|
                 expect(entry['user_id']).to eq user1.id
