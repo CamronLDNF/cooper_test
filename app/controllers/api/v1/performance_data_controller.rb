@@ -1,5 +1,10 @@
 class Api::V1::PerformanceDataController < ApplicationController
     
+    def index
+        @collection = current_api_v1_user.performance_data
+        render json: { entries: @collection }
+    end
+
     def create
         @data = PerformanceData.new(performance_data_params.merge(user: current_api_v1_user))
     
